@@ -1,0 +1,21 @@
+@import "../../styles/settings.scss";
+
+.header_back {
+  background-color: $light_orange;
+  padding: 2% 0%;
+  height: 50px;
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    li {
+      padding-right: 3%;
+      a {
+        color: $white_color;
+      }
+    }
+  }
+}

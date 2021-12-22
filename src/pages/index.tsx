@@ -1,7 +1,10 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import { Header } from '../components/Header'
+import styles from '../styles/Home.module.scss'
+import backgroundImage from "../assets/images/background.jpg"
+import { Footer } from '../components/Footer'
 
 const Home: NextPage = () => {
   return (
@@ -12,8 +15,10 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <p>This is my index page</p>
+        <Header/>
+        <Image src={backgroundImage} alt="background image" width={1550} height={700}/>
       </main>
+      <Footer/>
     </div>
   )
 }

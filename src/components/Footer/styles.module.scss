@@ -1,0 +1,16 @@
+@import "../../styles/settings.scss";
+
+.footer_back {
+  background-color: $light_orange;
+  padding: 2% 0%;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  p {
+    text-align: center;
+    margin: 0;
+    color: $white_color;
+  }
+}
