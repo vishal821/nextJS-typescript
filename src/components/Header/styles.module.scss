@@ -14,7 +14,8 @@
     li {
       padding-right: 3%;
       a {
-        color: $white_color;
+        color: $white_color !important;
+        cursor: pointer;
       }
     }
   }

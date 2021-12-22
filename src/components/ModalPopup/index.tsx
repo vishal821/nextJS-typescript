@@ -1,32 +1,24 @@
-import React from 'react'
+import React, { useState }  from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
 	Button, Modal, ModalFooter,
 	ModalHeader, ModalBody
 } from "reactstrap"
 
-function ModalPopup() {
-
+const ModalPopup = (props:any) =>  {
 	// Modal open state
-	const [modal, setModal] = React.useState(false);
-
+	const [isModalOpen, setModal] = useState(props?.open);
 	// Toggle for Modal
-	const toggle = () => setModal(!modal);
-
+	const toggleModalPopup = () => setModal(!isModalOpen);
 	return (
-		<div style={{
-			display: 'block', width: 700, padding: 30
-		}}>
-			<h4>ReactJS Reactstrap Modal Component</h4>
-			<Button color="primary"
-				onClick={toggle}>Open Modal</Button>
-			<Modal isOpen={modal}
-				toggle={toggle}>
+		<>
+			<Modal isOpen={isModalOpen}
+				toggle={toggleModalPopup}>
 				<ModalBody>
 					Simple Modal with just ModalBody...
 				</ModalBody>
 			</Modal>
-		</div >
+		</>
 	);
 }
 

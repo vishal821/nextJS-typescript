@@ -1,10 +1,10 @@
 import CustomButton from "../../components/button";
+import ModalPopup from "../../components/ModalPopup";
 
 export const Login = (login: any) => {
 return (
     <>
-    This is my login page
-    <CustomButton name={"login"}/>
+    <ModalPopup open={true}/>
     </>
 )
 }
