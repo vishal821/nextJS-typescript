@@ -3,18 +3,23 @@ import { useState } from "react";
 import { Navbar } from "reactstrap";
 import styles from "./styles.module.scss";
 import ModalPopup from "../ModalPopup";
+import {connect} from 'react-redux';
+import {decrementCounter, incrementCounter} from '../../redux/actions/counterActions';
 
-export const Header = () => {
+export const Header = (props:any) => {
+    console.log("abba",props)
     const [openModal, setModal] = useState(false)
 
     /* function to toggle/(show/hide) modal popup */
     const openLoginpopup = () => {
         setModal(!openModal)
     }
-    
+
     return(
         <>
         <Navbar className={styles["header_back"]}>
+        <button onClick={props.incrementCounter}>Increment</button>
+        <h1>{props.counter}</h1>
         <ul>
             <li><Link href={"#"}>Home </Link></li>
             <li><Link href={"#"}>About</Link></li>
@@ -29,5 +34,13 @@ export const Header = () => {
         </>
     )
 }
+const mapStateToProps = (state: { counter: { value: any; }; }) => ({
+    counter: state.counter.value
+});
+const mapDispatchToProps = {
+    incrementCounter: incrementCounter,
+    decrementCounter: decrementCounter,
+};
 
-export default Header;
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
