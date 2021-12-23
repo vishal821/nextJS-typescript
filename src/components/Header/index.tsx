@@ -5,8 +5,10 @@ import styles from "./styles.module.scss";
 import ModalPopup from "../ModalPopup";
 import {connect} from 'react-redux';
 import {decrementCounter, incrementCounter} from '../../redux/actions/counterActions';
+import { useSelector, useDispatch } from 'react-redux'
 
 export const Header = (props:any) => {
+    const counter = useSelector((state) => state.counter.value)
     console.log("abba",props)
     const [openModal, setModal] = useState(false)
 
@@ -14,12 +16,12 @@ export const Header = (props:any) => {
     const openLoginpopup = () => {
         setModal(!openModal)
     }
-
+const dispatch = useDispatch()
     return(
         <>
         <Navbar className={styles["header_back"]}>
-        <button onClick={props.incrementCounter}>Increment</button>
-        <h1>{props.counter}</h1>
+        <button onClick={() =>  dispatch(incrementCounter())}>Increment</button>
+        <h1>{counter}</h1>
         <ul>
             <li><Link href={"#"}>Home </Link></li>
             <li><Link href={"#"}>About</Link></li>
