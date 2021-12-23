@@ -16,10 +16,24 @@ export const signupSuccess = (response:any) => ({
     value: response
  });
   
-export const signup = () => {
+export const signup = (formData: {email:string, password: string}) => {
+    var bodyFormData = new FormData();
+    bodyFormData.append('firstname', 'Vishal');
+    const body = {
+        email:formData.email,
+        password: formData.password
+    }
+    
     return function(dispatch:any) {
-        axios.get(API_URL)
-            .then((response) => {console.log("hurraa",response);dispatch(signupSuccess(response));})
-            .catch((response) => {signupFailure(response);});
+        axios.post(
+            API_URL+'login', 
+            body, 
+            {
+                headers: { 
+                    'Content-Type' : 'application/json' 
+                }
+            }
+    ).then((response) => {console.log("hurraa",response);dispatch(signupSuccess(response));})
+    .catch((response) => {signupFailure(response);});
         }
 };
