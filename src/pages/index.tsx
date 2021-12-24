@@ -5,6 +5,7 @@ import { Header } from "../components/Header";
 import styles from "../styles/Home.module.scss";
 import backgroundImage from "../assets/images/background.jpg";
 import { Footer } from "../components/Footer";
+import { API_URL } from "../config";
 
 const Home: NextPage = () => {
   return (

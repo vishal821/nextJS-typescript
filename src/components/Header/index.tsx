@@ -7,6 +7,8 @@ import { connect } from "react-redux";
 import { useSelector, useDispatch } from "react-redux";
 import { signup } from "../../redux/actions/signUpAction";
 
+import { GetServerSideProps, GetStaticProps } from "next";
+import { API_URL } from "../../config";
 export const Header = (props: any) => {
   const [openModal, setModal] = useState(false);
 
@@ -39,5 +41,13 @@ export const Header = (props: any) => {
     </>
   );
 };
+export const getStaticProps: GetStaticProps = async (context) => {
+  console.log("ress", "000");
+  const res = await fetch(`${API_URL}/categories`);
+  console.log("ress", res);
+  // const data = await res.json();
 
+  // Pass data to the page via props
+  return { props: { data: "anna" } };
+};
 export default Header;
