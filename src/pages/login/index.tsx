@@ -2,11 +2,11 @@ import CustomButton from "../../components/button";
 import ModalPopup from "../../components/ModalPopup";
 
 export const Login = (login: any) => {
-return (
+  return (
     <>
-    <ModalPopup open={true}/>
+      <ModalPopup open={true} />
     </>
-)
-}
+  );
+};
 
 export default Login;

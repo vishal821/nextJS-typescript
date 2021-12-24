@@ -26,45 +26,31 @@ export const signupSuccess = (response:any) => ({
  }
 `;
 export const signup = async(formData: {email:string, password: string}) => {
-  let res = client.query({
-    query: query,
-    variables: {
-      // email: "vishal@arokee.com", 
-      // password: "123456"
-      // input: {
-        email: "vishal012@gmail.com", 
-        password: "123456"
-      // }
+  // let res = client.query({
+  //   query: query,
+  //   variables: {
+  //     // email: "vishal@arokee.com", 
+  //     // password: "123456"
+  //     // input: {
+  //       email: "vishal012@gmail.com", 
+  //       password: "123456"
+  //     // }
+  //   }
+  // })
+    const body = {
+      email:formData.email,
+      password: formData.password
     }
-  })
-    // const { data } = await client.query({
-    //     query: gql`
-    //       query login {
-    //         login(email:email,password: password) {
-    //           token
-    //           message
-    //         }
-    //       }
-    //     `,
-    //   });
-      // console.log("=======",data)
-    // var bodyFormData = new FormData();
-    // bodyFormData.append('firstname', 'Vishal');
-    // const body = {
-    //     email:formData.email,
-    //     password: formData.password
-    // }
-    
-    // return function(dispatch:any) {
-    //     axios.post(
-    //         API_URL+'login', 
-    //         body, 
-    //         {
-    //             headers: { 
-    //                 'Content-Type' : 'application/json' 
-    //             }
-    //         }
-    // ).then((response) => {console.log("hurraa",response);dispatch(signupSuccess(response));})
-    // .catch((response) => {signupFailure(response);});
-    //     }
+    return function(dispatch:any) {
+        axios.post(
+            API_URL+'login', 
+            body, 
+            {
+                headers: { 
+                    'Content-Type' : 'application/json' 
+                }
+            }
+    ).then((response) => {console.log("hurraa",response);dispatch(signupSuccess(response));})
+    .catch((response) => {signupFailure(response);});
+        }
 };
