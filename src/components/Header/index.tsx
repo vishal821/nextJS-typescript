@@ -9,7 +9,12 @@ import { signup } from "../../redux/actions/signUpAction";
 
 import { GetServerSideProps, GetStaticProps } from "next";
 import { API_URL } from "../../config";
-export const Header = (props: any) => {
+
+interface HeaderProps {
+  names: string[];
+}
+export const Header = (names: any) => {
+  console.log("ress", names);
   const [openModal, setModal] = useState(false);
 
   /* function to toggle/(show/hide) modal popup */
@@ -24,7 +29,7 @@ export const Header = (props: any) => {
             <Link href={"#"}>Home </Link>
           </li>
           <li>
-            <Link href={"#"}>About</Link>
+            <Link href={"about"}>About</Link>
           </li>
           <li>
             <Link href={"#"}>Services</Link>
@@ -41,13 +46,16 @@ export const Header = (props: any) => {
     </>
   );
 };
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps<HeaderProps> = async (
+  context
+) => {
   console.log("ress", "000");
-  const res = await fetch(`${API_URL}/categories`);
-  console.log("ress", res);
+  alert("hey");
+  //   const res = await fetch(`${API_URL}/categories`);
+  //   console.log("ress", res);
   // const data = await res.json();
 
   // Pass data to the page via props
-  return { props: { data: "anna" } };
+  return { props: { names: ["anna", "banne"] } };
 };
 export default Header;
