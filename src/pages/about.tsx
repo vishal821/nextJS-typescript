@@ -5,22 +5,22 @@ interface PeopleProps {
   names: string[];
 }
 
-export const getStaticProps: GetStaticProps<PeopleProps> = async (
+export const getServerSideProps: GetServerSideProps<PeopleProps> = async (
   context: any
 ) => {
+  console.log(context?.req);
   return {
     props: { names: ["a", "b", "c", "d", "e", "f"] },
     // revalidate: 1,
   };
 };
 export const About = (props: any) => {
-  console.log("====", props);
   return (
     <>
       <p>This is an people page</p>
-      {/* {names.map((ele: any) => {
+      {props?.names.map((ele: any) => {
         return <h1 key={ele}>{ele}</h1>;
-      })} */}
+      })}
     </>
   );
 };
